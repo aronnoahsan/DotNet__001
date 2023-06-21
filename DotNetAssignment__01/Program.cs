@@ -25,7 +25,18 @@ class Library
     
     public void AddBook(Book book)
     {
-        books.Add(book);
+        //Q8. Error handling added for book with duplicate ISBN or Title
+        bool alreadyHasThisBook = books.Exists(b=> b.ISBN == book.ISBN);
+        bool sameBookName = books.Exists(b=>b.Title == book.Title);
+
+        if(alreadyHasThisBook || sameBookName)
+        {
+            Console.WriteLine("This book exists");
+        }
+        else
+        {
+            books.Add(book);
+        }
     }
 
     //Q5.2 RemoveBook takes ISBN as a parameter and removes book that matches the ISBN
@@ -36,6 +47,11 @@ class Library
         if(bookToRemove != null)
         {
             books.Remove(bookToRemove);
+        }
+        else
+        {
+            //Error handling for non existant book in the library
+            Console.WriteLine("No books exists with this ISBN");
         }
     }
 
@@ -84,11 +100,21 @@ public class Execute
 
 
         //Q7. Testing AddBook, DisplayBook and RemoveBook Methods
+
+        //Adding 2 books in the library
         library.AddBook(book1);
         library.AddBook(book2);
 
+        //Error Test: Adding duplicate book
+        library.AddBook(book2); 
+
+        //Removing a book
         library.RemoveBook("1234");
 
+        //Error test: Removing a non existant book
+        library.RemoveBook("3456");
+
+        //Displaying all books in the library
         library.DisplayBook();
     }
 }
