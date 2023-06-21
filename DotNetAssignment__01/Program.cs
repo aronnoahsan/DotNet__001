@@ -1,7 +1,7 @@
 ﻿// Q1.	Create a class called "Book" with provided attributes
 using static System.Reflection.Metadata.BlobBuilder;
 
-class Book
+public class Book
 {
 
     //Q2. Implementing appropriate getter and setter methods 
@@ -13,7 +13,7 @@ class Book
 }
 
     //Q3. Creating another class "Library" with list of Book object
-class Library
+public class Library
 {
     public List<Book> books;
     //Q4. Constructor class that initializes an empty list of books
@@ -72,6 +72,15 @@ class Library
 
 }
 
+public class FictionBook : Book
+{
+    public string Category { get; set; }
+}
+
+public class NonFictionBook : Book
+{
+    public string Subject { get; set; }
+}
 public class Execute
 {
     public static void Main(string[] args)
@@ -98,7 +107,6 @@ public class Execute
             Available = true,
         };
 
-
         //Q7. Testing AddBook, DisplayBook and RemoveBook Methods
 
         //Adding 2 books in the library
@@ -116,5 +124,28 @@ public class Execute
 
         //Displaying all books in the library
         library.DisplayBook();
+
+
+        //Q10. Derived Classes Inheritence
+        FictionBook fictionBook = new FictionBook
+        {
+            Title = "DEF",
+            Author = "DEF",
+            ISBN = "5678",
+            PublicationYear = 2023,
+            Available = true,
+            Category = "Adventure Novel",
+        };
+
+        NonFictionBook nonFictionBook = new NonFictionBook
+        {
+            Title = "DEF",
+            Author = "DEF",
+            ISBN = "5678",
+            PublicationYear = 2023,
+            Available = true,
+            Subject = "History"
+        };
+
     }
 }
