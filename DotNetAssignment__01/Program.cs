@@ -10,24 +10,6 @@ class Book
     public string ISBN { get; set; }
     public int PublicationYear { get; set; }
     public bool Available { get; set; }
-
-    static void Main(string[] args)
-    {
-        Book book = new Book();
-
-        book.Title = "Hello";
-        book.Author = "Author";
-        book.ISBN = "12345ABCDE";
-        book.PublicationYear = 2023;
-        book.Available = true;
-
-        Console.WriteLine(book.Title);
-        Console.WriteLine(book.Author);
-        Console.WriteLine(book.ISBN);
-        Console.WriteLine(book.PublicationYear);
-        Console.WriteLine(book.Available);
-
-    }
 }
 
     //Q3. Creating another class "Library" with list of Book object
@@ -72,4 +54,41 @@ class Library
     }
 
 
+}
+
+public class Execute
+{
+    public static void Main(string[] args)
+    {
+
+        //Q6 Instance of the library class in exicution 
+        Library library = new Library();
+
+        Book book1 = new Book
+        {
+            Title = "ABC",
+            Author = "ABC",
+            ISBN = "1234",
+            PublicationYear = 2023,
+            Available = true,
+        };
+
+        Book book2 = new Book
+        {
+            Title = "DEF",
+            Author = "DEF",
+            ISBN = "5678",
+            PublicationYear = 2023,
+            Available = true,
+        };
+
+
+        //Q7. Testing AddBook, DisplayBook and RemoveBook Methods
+        library.AddBook(book1);
+        library.AddBook(book2);
+
+        library.RemoveBook("1234");
+
+        library.DisplayBook();
+    }
 }
